@@ -19,7 +19,6 @@ namespace Store.PageObjects
 
         [FindsBy(How = How.CssSelector, Using = ".buttons .pull-right a")]
         private IWebElement checkoutButton { get; set; }
-
         [FindsBy(How = How.Id, Using = "checkout-cart")]
         private IWebElement cartConent { get; set; }
 

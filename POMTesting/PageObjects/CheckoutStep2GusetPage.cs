@@ -17,21 +17,6 @@ namespace Store.PageObjects
         [FindsBy(How = How.Id, Using = "button-guest")]
         private IWebElement continueAsGuestButton { get; set; }
 
-        override public void SetPersonalDetails()
-        {
-            base.SetPersonalDetails();
-        }
-
-        override public void SetAddress()
-        {
-            base.SetAddress();
-        }
-
-        override public void CheckTheSameAddressForDeliveryAndBiling()
-        {
-            base.CheckTheSameAddressForDeliveryAndBiling();
-        }
-
         override public CheckoutStep3Page FinishStep2()
         {
             continueAsGuestButton.Click();

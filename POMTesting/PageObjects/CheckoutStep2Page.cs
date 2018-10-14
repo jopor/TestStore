@@ -19,10 +19,8 @@ namespace Store.PageObjects
 
         [FindsBy(How = How.CssSelector, Using = "div#collapse-payment-address .row")]
         private IWebElement step2Content { get; set; }
-
         [FindsBy(How = How.ClassName, Using = "alert-danger")]
         private IWebElement warningMessage { get; set; }
-
         [FindsBy(How = How.ClassName, Using = "text-danger")]
         private IWebElement validationMessage { get; set; }
 

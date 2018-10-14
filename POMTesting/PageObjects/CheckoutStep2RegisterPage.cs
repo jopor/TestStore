@@ -13,31 +13,6 @@ namespace Store.PageObjects
             this.driver = driver;
         }
 
-        //override public void SetPassword()
-        //{
-        //    base.SetPassword();
-        //}
-
-        //override public void CheckPrivacyPolicy()
-        //{
-        //    base.CheckPrivacyPolicy();
-        //}
-
-        //override public void SetPersonalDetails()
-        //{
-        //    base.SetPersonalDetails();
-        //}
-
-        //override public void SetAddress()
-        //{
-        //    base.SetAddress();
-        //}
-
-        //override public void CheckTheSameAddressForDeliveryAndBiling()
-        //{
-        //    base.CheckTheSameAddressForDeliveryAndBiling();
-        //}
-
         override public CheckoutStep3Page FinishStep2()
         {
             continueAsRegisterButton.Click();

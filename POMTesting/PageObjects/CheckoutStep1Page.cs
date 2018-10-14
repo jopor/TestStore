@@ -24,10 +24,8 @@ namespace Store.PageObjects
 
         [FindsBy(How = How.CssSelector, Using = "input[value=guest]")]
         protected IWebElement guestRadioButton { get; set; }
-
         [FindsBy(How = How.CssSelector, Using = "input[value=register]")]
         protected IWebElement registerRadioButton { get; set; }
-
         [FindsBy(How = How.Id, Using = "button-account")]
         protected IWebElement continueButton { get; set; }
 
