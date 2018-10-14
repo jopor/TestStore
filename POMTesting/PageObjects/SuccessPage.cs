@@ -1,13 +1,15 @@
-﻿using OpenQA.Selenium;
+﻿using NLog;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace Store.PageObjects
 {
-    class SuccessPage
+    public class SuccessPage
     {
         private IWebDriver driver;
+        protected static readonly Logger log = LogManager.GetCurrentClassLogger();
 
         public SuccessPage(IWebDriver driver)
         {
@@ -20,7 +22,7 @@ namespace Store.PageObjects
         [FindsBy(How = How.Id, Using = "content")]
         private IWebElement messageContent { get; set; }
 
-        public string getMessage()
+        public string GetMessage()
         {
             return messageContent.Text.ToString();
         }

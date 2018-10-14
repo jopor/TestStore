@@ -1,13 +1,14 @@
-﻿using NUnit.Framework;
+﻿using NLog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using Store.Helpers;
 
 namespace Store.PageObjects
 {
-    class HomePage
+    public class HomePage
     {
         private IWebDriver driver;
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
 
         public HomePage(IWebDriver driver)
         {
@@ -21,20 +22,23 @@ namespace Store.PageObjects
         [FindsBy(How = How.Id, Using = "cart-total")]
         private IWebElement cartButton { get; set; }
 
-        public void addProductToChart()
+        public void AddProductToChart()
         {
-            addToCartButton.Click();      
+            addToCartButton.Click();
+            log.Info($"Added product to cart on Home page");
         }
 
-        public CartPage goToCartPage()
+        public CartPage GoToCartPage()
         {
-            driver.Navigate().GoToUrl("https://rekrutacjaqa2.xsolve.software/index.php?route=checkout/cart");
+            Actions.GoToUrl(driver, "route=checkout/cart");
+            log.Info($"Go to Cart page from Home page");
             return new CartPage(driver);
         }
 
-        public string getCartItemsAmount()
+        public string GetCartButtonMessage()
         {
             Wait.WaitForElementVisible(driver, cartButton);
+            log.Info($"Verify message from Cart button on Home page");
             return cartButton.Text.ToString();
         }
     }

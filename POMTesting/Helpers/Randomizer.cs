@@ -1,28 +1,26 @@
 ﻿using Bogus;
-using RandomNameGeneratorLibrary;
-using System;
 
 namespace Store.Helpers
 {
-    class Randomizer
+    public class Randomizer
     {
-        public string generateFirstName() => new Faker().Person.FirstName;
+        public static string GenerateFirstName() => new Faker().Person.FirstName;
 
-        public string generateLastName() => new Faker().Person.LastName;
+        public static string GenerateLastName() => new Faker().Person.LastName;
 
-        public string generateEmail() => new Faker().Person.Email;
+        public static string GenerateEmail() => new Faker().Person.Email;
 
-        public string generatePhone() => new Faker().Person.Phone;
+        public static string GeneratePhone() => new Faker().Person.Phone;
 
-        public string generateCompany() => new Faker().Company.CompanyName();
+        public static string GenerateCompany() => new Faker().Company.CompanyName();
 
-        public string generateAddress() => new Faker().Address.StreetAddress();
+        public static string GenerateAddress() => new Faker().Address.StreetAddress();
 
-        public string generateCity() => new Faker().Address.City();
+        public static string GenerateCity() => new Faker().Address.City();
 
-        public string generateCountryCode() => new Faker().Address.CountryCode();
+        public static string GenerateCountryCode() => new Faker().Address.CountryCode();
 
-        public string generatePassword() => new Faker().Internet.Password();
+        public static string GeneratePassword() => new Faker().Internet.Password();
     }
 }
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{C1E69D84-4BF4-4E40-A78E-1268B9F24F1E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>POMTesting</RootNamespace>
-    <AssemblyName>POMTesting</AssemblyName>
+    <RootNamespace>Store</RootNamespace>
+    <AssemblyName>Store</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -40,6 +40,10 @@
       <HintPath>..\packages\FluentAssertions.5.4.2\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.10\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -49,8 +53,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
@@ -71,19 +80,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Actions.cs" />
     <Compile Include="Helpers\Randomizer.cs" />
     <Compile Include="Helpers\Wait.cs" />
+    <Compile Include="TestObject\Step2TestObject.cs" />
+    <Compile Include="PageObjects\CheckoutStep2RegisterPage.cs" />
+    <Compile Include="PageObjects\CheckoutStep3GuestPage.cs" />
+    <Compile Include="PageObjects\CheckoutStep3RegisterPage.cs" />
+    <Compile Include="PageObjects\CheckoutStep2GusetPage.cs" />
+    <Compile Include="PageObjects\CheckoutStep6Page.cs" />
+    <Compile Include="PageObjects\CheckoutStep5Page.cs" />
+    <Compile Include="PageObjects\CheckoutStep4Page.cs" />
+    <Compile Include="PageObjects\CheckoutStep3Page.cs" />
+    <Compile Include="PageObjects\CheckoutStep2Page.cs" />
+    <Compile Include="PageObjects\CheckoutStep1Page.cs" />
     <Compile Include="PageObjects\SuccessPage.cs" />
-    <Compile Include="PageObjects\CheckoutPage.cs" />
     <Compile Include="PageObjects\CartPage.cs" />
-    <Compile Include="Test\CartPageTest.cs" />
-    <Compile Include="Test\HomePageTest.cs" />
-    <Compile Include="Test\CheckoutPageTest.cs" />
+    <Compile Include="Tests\CartPageTest\CheckCart.cs" />
+    <Compile Include="Tests\CheckoutPageTest\RegisterCheckout.cs" />
+    <Compile Include="Tests\HomePageTest\AddProduct.cs" />
+    <Compile Include="Tests\CheckoutPageTest\GuestCheckout.cs" />
     <Compile Include="Helpers\InitClass.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="App.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

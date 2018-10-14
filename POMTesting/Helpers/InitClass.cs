@@ -1,53 +1,53 @@
-﻿using NUnit.Framework;
+﻿using NLog;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
+using Store.Helpers;
+using System.Configuration;
 
 namespace Store.PageObjects
 {
-    public class InitClass 
+    public class InitClass
     {
         protected IWebDriver driver { get; private set; }
+        protected static readonly Logger log = LogManager.GetCurrentClassLogger();
 
         [SetUp]
         public void Initialize()
         {
-            SelectBrowser(BrowserType.Chrome);
+            SelectBrowser(ConfigurationManager.AppSettings["browser"]);
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://rekrutacjaqa2.xsolve.software/index.php?route=common/home");
+            Actions.GoToUrl(driver, "route=common/home");
+            log.Info($">> {TestContext.CurrentContext.Test.Name} test is run");
         }
 
         [TearDown]
         public void CleanUp()
         {
+            if (TestContext.CurrentContext.Result.Outcome.Status.Equals(TestStatus.Failed))
+            {
+                log.Error($"{TestContext.CurrentContext.Test.Name} test failed");
+            }
+            log.Info($"> {TestContext.CurrentContext.Test.Name} test successfully finished");
+
             driver.Dispose();
         }
 
-        private void SelectBrowser(BrowserType browserType)
+        private void SelectBrowser(string browserType)
         {
-            switch(browserType)
+            switch (browserType)
             {
-                case BrowserType.Chrome:
+                case "Firefox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "Chrome":
+                default:
                     ChromeOptions option = new ChromeOptions();
                     driver = new ChromeDriver(option);
                     break;
-                case BrowserType.Firefox:
-                    driver = new FirefoxDriver();
-                    break;
-                case BrowserType.IE:
-                    break;
-                default:
-                    break;
             }
-        }
-
-        enum BrowserType
-        {
-            Chrome,
-            Firefox,
-            IE
         }
     }
 }
